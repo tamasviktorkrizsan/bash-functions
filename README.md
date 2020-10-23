@@ -93,6 +93,16 @@ an array of possible input file formats.
     `user_input="*.wav *.flac *.m4a *.mp3 *.ac3 *.webm";`
 
 
+## Developer notes
+
+### code style 
+
+The code in this repository formatted according the guidelines of the Google Style Guides. 
+If you want to contribute to this project, then read the guide first.
+
+https://google.github.io/styleguide/shellguide.html
+
+
 ## Sources
 
 https://ss64.com/bash/
