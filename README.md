@@ -33,20 +33,20 @@ will be executed as usual, then a prompt message will be printed out by next_scr
 The terminal window will be kept open as long as the user can check the
 process results, then hit the enter key to close the window.
 
-  - `next_script "" "";`
+`next_script "" "";`
 
 
 - If the **path** parameter is empty, then the script will looking for the next script
 file in the current folder.
 
-  - `next_script "" "example.sh";`
+`next_script "" "example.sh";`
 
 
 - If both parameters are filled, then the terminal first will enter the folder via
 the relative path from the previous script file folder, then the given shell file
 in the target folder will be executed.
 
-  - `next_script "../example_folder" "example.sh";`
+`next_script "../example_folder" "example.sh";`
 
 
 ### remove_whitespace
@@ -54,7 +54,7 @@ in the target folder will be executed.
 If you want to replace whitespace with underscores in strings, you can utilize
 this function.
 
-  - `remove_whitespace "<string>";`
+`remove_whitespace "<string>";`
 
 
 ### rename_whitespace
@@ -68,7 +68,8 @@ this function.
 - If you call the function without any given input parameter, the function will
 process all files and folders in the folder.
 
-  - `remove_whitespace;`  
+`remove_whitespace;`  
+
 
 - If you want to run this function in a interactive shell source
 `whitespace.sh` or the `bash.inc.sh` shell file in `home\<user>\.bash_profile`.
@@ -80,24 +81,24 @@ function automatically loads up.
 
 - Enabled tracing, for debugging purposes.
 
-  - `set -x`
+  `set -x`
 
 
 - Multiple filename patterns enabled. This is useful when you want to accept
 an array of possible input file formats.
 
-  - `shopt -s nullglob;`
+`shopt -s nullglob;`
 
-    - For example compatible FFMPEG audio input formats for conversion.
+For example compatible FFMPEG audio input formats for conversion.
 
-    `user_input="*.wav *.flac *.m4a *.mp3 *.ac3 *.webm";`
+`user_input="*.wav *.flac *.m4a *.mp3 *.ac3 *.webm";`
 
 
 ## Developer notes
 
-### code style 
+### code style
 
-The code in this repository formatted according the guidelines of the Google Style Guides. 
+The code in this repository formatted according the guidelines of the Google Style Guides.
 If you want to contribute to this project, then read the guide first.
 
 https://google.github.io/styleguide/shellguide.html
