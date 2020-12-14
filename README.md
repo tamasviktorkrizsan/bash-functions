@@ -29,8 +29,7 @@ Put the function call at the end of your script.
 
 
 - `next_script "" "";` When **all** parameters are **empty**, the script above this function
-will be executed as usual, then a prompt message will be printed out by next_script.
-The terminal window will be kept open as long as the user can check the
+will be executed as usual, then the terminal window will be kept open as long as the user can check the
 process results, then hit the enter key to close the window.
 
 
