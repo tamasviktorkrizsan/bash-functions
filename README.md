@@ -27,50 +27,37 @@ include the "bash.inc.sh" library file.
 Chain (Queue) up the execution of your script files with the next_script function.
 Put the function call at the end of your script.
 
-
-- In its default state, when both parameters are empty, the script above this function
-will be executed as usual, then a prompt message will be printed out by next_script.
-The terminal window will be kept open as long as the user can check the
+- `next_script "" "";` When **all** parameters are **empty**, the script above this function
+will be executed as usual, then the terminal window will be kept open as long as the user can check the
 process results, then hit the enter key to close the window.
 
-  - `next_script "" "";`
-
-
-- If the **path** parameter is empty, then the script will looking for the next script
+- `next_script "" "example.sh";` If the **path** parameter is **empty**, then the script will looking for the next script
 file in the current folder.
 
-  - `next_script "" "example.sh";`
-
-
-- If both parameters are filled, then the terminal first will enter the folder via
+- `next_script "../example_folder" "example.sh";` If **all** parameters are **filled**, then the terminal first will enter the folder via
 the relative path from the previous script file folder, then the given shell file
 in the target folder will be executed.
-
-  - `next_script "../example_folder" "example.sh";`
 
 
 ### remove_whitespace
 
-If you want to replace whitespace with underscores in strings, you can utilize
-this function.
+`remove_whitespace "<string>";`
 
-  - `remove_whitespace "<string>";`
+If you want to replace whitespace with underscores in **strings**, you can utilize
+this function.
 
 
 ### rename_whitespace
 
-If you want to replace whitespace with underscores in filenames, you can utilize
+`rename_whitespace "<filename>"`
+
+If you want to replace whitespace with underscores in **filenames**, you can utilize
 this function.
 
-`rename_whitespace <filename>`
+- **default state:** when all parameters are empty, the function will
+process all files and folders in the current folder.
 
-
-- If you call the function without any given input parameter, the function will
-process all files and folders in the folder.
-
-  - `remove_whitespace;`  
-
-- If you want to run this function in a interactive shell source
+- If you want to run this function in a interactive shell source the
 `whitespace.sh` or the `bash.inc.sh` shell file in `home\<user>\.bash_profile`.
 After this was done, next time when you fire up the Bash Prompt, the rename_whitespace
 function automatically loads up.
@@ -78,26 +65,17 @@ function automatically loads up.
 
 ## Additional features
 
-- Enabled tracing, for debugging purposes.
+- `set -x` Enabled tracing, for debugging purposes.
 
-  - `set -x`
-
-
-- Multiple filename patterns enabled. This is useful when you want to accept
-an array of possible input file formats.
-
-  - `shopt -s nullglob;`
-
-    - For example compatible FFMPEG audio input formats for conversion.
-
-    `user_input="*.wav *.flac *.m4a *.mp3 *.ac3 *.webm";`
+- `shopt -s nullglob;` Multiple filename patterns enabled. This is useful when you want to accept
+an array of possible input file formats like `user_input="*.wav *.flac *.m4a *.mp3 *.ac3 *.webm";` for FFMPEG
 
 
 ## Developer notes
 
-### code style 
+### code style
 
-The code in this repository formatted according the guidelines of the Google Style Guides. 
+The code in this repository formatted according the standards of the Google Style Guides.
 If you want to contribute to this project, then read the guide first.
 
 https://google.github.io/styleguide/shellguide.html
