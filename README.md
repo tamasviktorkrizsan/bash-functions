@@ -27,15 +27,12 @@ include the "bash.inc.sh" library file.
 Chain (Queue) up the execution of your script files with the next_script function.
 Put the function call at the end of your script.
 
-
 - `next_script "" "";` When **all** parameters are **empty**, the script above this function
 will be executed as usual, then the terminal window will be kept open as long as the user can check the
 process results, then hit the enter key to close the window.
 
-
 - `next_script "" "example.sh";` If the **path** parameter is **empty**, then the script will looking for the next script
 file in the current folder.
-
 
 - `next_script "../example_folder" "example.sh";` If **all** parameters are **filled**, then the terminal first will enter the folder via
 the relative path from the previous script file folder, then the given shell file
