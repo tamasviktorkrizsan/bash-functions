@@ -45,27 +45,23 @@ in the target folder will be executed.
 
 ### remove_whitespace
 
-If you want to replace whitespace with underscores in strings, you can utilize
-this function.
-
 `remove_whitespace "<string>";`
+
+If you want to replace whitespace with underscores in **strings**, you can utilize
+this function.
 
 
 ### rename_whitespace
 
-If you want to replace whitespace with underscores in filenames, you can utilize
-this function.
-
 `rename_whitespace "<filename>"`
 
+If you want to replace whitespace with underscores in **filenames**, you can utilize
+this function.
 
-- If you call the function without any given input parameter, the function will
+- **default state:** when all parameters are empty, the function will
 process all files and folders in the current folder.
 
-`remove_whitespace;`  
-
-
-- If you want to run this function in a interactive shell source
+- If you want to run this function in a interactive shell source the
 `whitespace.sh` or the `bash.inc.sh` shell file in `home\<user>\.bash_profile`.
 After this was done, next time when you fire up the Bash Prompt, the rename_whitespace
 function automatically loads up.
