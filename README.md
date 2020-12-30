@@ -5,13 +5,13 @@ basic bash functions and settings for 3rd party software scripting.
 ## Installation
 
 Set a PATH environmental variable to the directory where you want store your library
-files and copy the contents of the "function-library" folder to it.
+files and copy the contents of the "lib" folder to it.
 
 
 ## Usage
 
 At the top of your custom script file, following the shebang `#!/bin/bash` line
-include the "bash.inc.sh" library file.
+include the "bash.inc.sh" file.
 
 `source bash.inc.sh`
 
@@ -24,7 +24,7 @@ include the "bash.inc.sh" library file.
 
 `next_script "<path>" "<shell filename>";`
 
-Chain (Queue) up the execution of your script files with the next_script function.
+Queue up the execution of your script files with the next_script function.
 Put the function call at the end of your script.
 
 - `next_script "" "";` When **all** parameters are **empty**, the script above this function
