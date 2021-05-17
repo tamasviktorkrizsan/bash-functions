@@ -1,6 +1,6 @@
 #!/bin/bash
 # Basic bash settings and function includes.
-# Copyright (C) 2020 Tamas Viktor Krizsan
+# Copyright (C) 2021 Tamas Viktor Krizsan
 # <https://github.com/tamasviktorkrizsan>
 # License: GPL-3.0-or-later
 
@@ -15,6 +15,10 @@ IFS=' ';
 
 
 ### INCLUDE FUNCTIONS
+
+source d2u.sh
+
+source make_dir.sh
 
 source next_script.sh
 
