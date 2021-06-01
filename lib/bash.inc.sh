@@ -18,6 +18,8 @@ IFS=' ';
 
 source d2u.sh
 
+source handle_io.sh
+
 source make_dir.sh
 
 source next_script.sh
