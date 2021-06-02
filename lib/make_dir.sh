@@ -1,0 +1,52 @@
+#!/bin/bash
+# This file contain the make_dir function.
+# Copyright (C) 2020 Tamas Viktor Krizsan
+# <https://github.com/tamasviktorkrizsan>
+# License: GPL-3.0-or-later
+
+
+### FUNCTION
+
+####################################################################
+# Create directory with custom options.
+# Arguments:
+#   new directory name
+####################################################################
+function make_dir() {
+
+
+### INPUT PARAMETERS
+
+declare usr_input="${1:-OUTPUT}";
+
+
+### CONSTANTS
+
+declare -r MKDIR_CONFIG="--verbose --parents --mode=777";
+
+
+### VARIABLES
+
+declare log_suffix="make_dir_$input.log";
+
+
+### PROCESSING
+
+declare input;
+
+input=$(replace_whitespace "$usr_input");
+
+
+### OUTPUT
+
+if [[ -e $input ]];
+
+  then >&2 echo "The folder named < $input > is already exist.";
+
+  else mkdir $MKDIR_CONFIG "$input" 2>&1 |\
+
+  tee "$log_suffix";
+
+fi
+
+}
