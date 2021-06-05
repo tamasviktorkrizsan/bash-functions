@@ -25,16 +25,13 @@ declare usr_input="${1:-OUTPUT}";
 declare -r MKDIR_CONFIG="--verbose --parents --mode=777";
 
 
-### VARIABLES
-
-declare log_suffix="make_dir_$input.log";
-
-
 ### PROCESSING
 
 declare input;
 
 input=$(replace_whitespace "$usr_input");
+
+declare log_suffix="make_dir_$input.log";
 
 
 ### OUTPUT
