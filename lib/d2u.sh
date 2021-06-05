@@ -8,7 +8,7 @@
 ### FUNCTION
 
 ####################################################################
-# Convert line endings in text files to LF (linux compatible).
+# Convert line endings in text files to LF (Unix compatible).
 # Arguments:
 #   input file
 ####################################################################
