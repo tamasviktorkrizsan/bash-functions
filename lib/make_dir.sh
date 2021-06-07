@@ -42,7 +42,7 @@ if [[ -e $input ]];
 
   else mkdir $MKDIR_CONFIG "$input" 2>&1 |\
 
-  tee "$log_suffix";
+  tee "$input/$log_suffix";
 
 fi
 
