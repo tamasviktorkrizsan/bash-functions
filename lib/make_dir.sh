@@ -36,13 +36,14 @@ declare log_suffix="make_dir_$input.log";
 
 ### OUTPUT
 
+# TODO(tamasviktorkrizsan): temporarily disabled tee functionality to make
+# the "make_dir" function work properly
+
 if [[ -e $input ]];
 
   then >&2 echo "The folder named < $input > is already exist.";
 
-  else mkdir $MKDIR_CONFIG "$input" 2>&1 |\
-
-  tee "$input/$log_suffix";
+  else mkdir $MKDIR_CONFIG "$input" >&2; # | tee "$input/$log_suffix";
 
 fi
 
