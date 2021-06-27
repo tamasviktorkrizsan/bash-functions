@@ -26,7 +26,7 @@ local user_file="$2";
 
 ## Global Variables
 
-IFS=$'\n';
+#IFS=$'\n';
 
 
 ## Processing
