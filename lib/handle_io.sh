@@ -49,7 +49,7 @@ fi
 # Handles output files. Creates output folder and replace whitespace
 # with underscores in the output filename.
 # Arguments:
-#  input file, output folder (optional)
+#  input file, output folder
 #####################################################################
 
 function handle_output () {
@@ -64,15 +64,24 @@ declare usr_output_folder="${2:-OUTPUT}";
 
 ### PROCESSING
 
+# create a output directory
+
 make_dir "$usr_output_folder";
 
+
+# create output file
 
 declare output_file;
 
 output_file=$(replace_whitespace "${usr_input%.*}");
 
 
+# concat a output path
+
 declare output_path="$usr_output_folder/$output_file";
+
+
+### OUTPUT
 
 echo "$output_path";
 
