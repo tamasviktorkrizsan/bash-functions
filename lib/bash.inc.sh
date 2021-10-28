@@ -18,7 +18,7 @@ IFS=' ';
 
 source d2u.sh
 
-source handle_io.sh
+source handle_output.sh
 
 source make_dir.sh
 
