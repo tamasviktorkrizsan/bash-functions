@@ -23,7 +23,7 @@ function replace_whitespace() {
 
   ## Execute Command
 
-  echo "$user_input" | tr ' ' '_';
+  echo "$user_input" | tr ' |' '_-';
 
   }
 
