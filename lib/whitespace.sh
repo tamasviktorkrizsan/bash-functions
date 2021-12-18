@@ -7,51 +7,68 @@
 
 ### FUNCTIONS
 
-###########################################################################
-# Remove whitespace from input string.
+################################################################################
+# Remove whitespace and other OS prohibited characters from the input string.
 # Arguments:
 #   string
 # Outputs:
-#  changed string value. Whitespace (" ") replaced with underscores ("_")
-###########################################################################
-function replace_whitespace() {
+#  corrected OS friendly string value.
+################################################################################
+function rename_whitespace_string() {
 
-  ## Input Parameters
+  ## INPUT PARAMETERS
 
-  local user_input="$1";
+  declare usr_input="${1-*}";
 
 
-  ## Execute Command
+  ## PROCESSING
 
-  echo "$user_input" | tr ' |' '_-';
+  echo "$usr_input" | tr ' |' '_--';
 
   }
 
 
-#####################################################################
-# Remove whitespace from filenames.
+################################################################################
+# Remove whitespace and other OS prohibited characters from filenames or string
 # Arguments:
 #   wildcard - DEFAULT (*) or wildcard extension (*.mkv)
 # Outputs:
 #  renamed files. Whitespace (" ") replaced with underscores ("_")
-####################################################################
+################################################################################
 function rename_whitespace() {
 
-  ## Input Parameters
 
-  local user_input=${1:-*};
+## INPUT PARAMETERS
+
+declare usr_input="${1:-*}";
+
+IFS='\n'
 
 
-  ## Execute Command
+## VARIABLE SETTINGS
 
-  local filename;
+declare string_fix;
 
-  for i in $user_input;
 
-  do filename=$(replace_whitespace "$i");
+## PROCESSING
 
-  mv "$i" $filename;
+if [[ -e $usr_input ]] || [[ $usr_input == '*' ]]; then
+
+  for i in $usr_input;
+
+    do string_fix=$(rename_whitespace_string "$i");
+
+    mv "$i" "$string_fix";
 
   done;
 
-  }
+
+  else
+
+  string_fix=$(rename_whitespace_string "$usr_input");
+
+  echo "$string_fix";
+
+fi
+
+}
