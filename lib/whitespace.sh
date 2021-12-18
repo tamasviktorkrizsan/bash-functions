@@ -42,6 +42,9 @@ function rename_whitespace() {
 
 declare usr_input="${1:-*}";
 
+
+## CONSTANT SETTINGS
+
 IFS='\n'
 
 
@@ -54,7 +57,7 @@ declare string_fix;
 
 if [[ -e $usr_input ]] || [[ $usr_input == '*' ]]; then
 
-echo "INPUT DETECTED AS A FILENAME";
+  echo "INPUT DETECTED AS A FILENAME";
 
   for i in $usr_input;
 
@@ -65,7 +68,7 @@ echo "INPUT DETECTED AS A FILENAME";
   done;
 
 
-  else
+else
 
   echo "INPUT DETECTED AS A INPUT STRING";
 
