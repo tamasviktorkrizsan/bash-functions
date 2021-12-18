@@ -54,6 +54,8 @@ declare string_fix;
 
 if [[ -e $usr_input ]] || [[ $usr_input == '*' ]]; then
 
+echo "INPUT DETECTED AS A FILENAME";
+
   for i in $usr_input;
 
     do string_fix=$(rename_whitespace_string "$i");
@@ -64,6 +66,8 @@ if [[ -e $usr_input ]] || [[ $usr_input == '*' ]]; then
 
 
   else
+
+  echo "INPUT DETECTED AS A INPUT STRING";
 
   string_fix=$(rename_whitespace_string "$usr_input");
 
