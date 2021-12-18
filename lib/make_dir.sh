@@ -30,9 +30,9 @@ declare -r MKDIR_CONFIG="--verbose --parents --mode=777";
 # TODO(tamasviktorkrizsan): temporarily disabled tee functionality to make
 # the "make_dir" function work properly
 
-if [[ -e $usr_input ]];
+if [[ -e $usr_input ]]; then
 
-  then >&2 echo "The folder named < $usr_input > is already exist.";
+>&2 echo "The folder named < $usr_input > is already exist.";
 
 else mkdir $MKDIR_CONFIG "$usr_input"; # >&2 | tee "$usr_input/$log_suffix";
 
