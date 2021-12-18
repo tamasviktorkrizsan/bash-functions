@@ -84,3 +84,5 @@ https://google.github.io/styleguide/shellguide.html
 ## Sources
 
 https://ss64.com/bash/
+
+https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words
