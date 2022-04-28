@@ -11,7 +11,9 @@ set -x;
 
 shopt -s nullglob;
 
-IFS=' ';
+#IFS=' ';
+
+IFS='\n'
 
 
 ### INCLUDE FUNCTIONS
