@@ -7,17 +7,18 @@
 
 ### FUNCTION
 
-####################################################################
-# Create directory with custom options.
+################################################################################
+# Check for the existence for the given folder.
+# If the folder doesn't exists create the directory with custom options.
 # Arguments:
 #   new directory or path name
-####################################################################
+################################################################################
 function make_dir() {
 
 
 ### INPUT PARAMETERS
 
-declare usr_input="${1:-OUTPUT}";
+declare usr_input="${1:?ERROR! NOT A VALID INPUT!}";
 
 
 ### CONSTANTS
@@ -30,9 +31,11 @@ declare -r MKDIR_CONFIG="--verbose --parents --mode=777";
 # TODO(tamasviktorkrizsan): temporarily disabled tee functionality to make
 # the "make_dir" function work properly
 
+# check if the dir exist
+
 if [[ -e $usr_input ]]; then
 
->&2 echo "The folder named < $usr_input > is already exist.";
+>&2 echo "The folder named < $usr_input > is already exist. Skipping folder creation.";
 
 else mkdir $MKDIR_CONFIG "$usr_input"; # >&2 | tee "$usr_input/$log_suffix";
 
