@@ -12,7 +12,8 @@
 # Arguments:
 #  JSON string, (array/object) index, key
 # Outputs:
-#  JSON Object or value string
+#  JSON Object or value string. If the query results in a "null" then the output
+# value will be a empty string.
 ################################################################################
 query_json () {
 
@@ -52,13 +53,13 @@ fi
 
 ## Output
 
-if [[ -n "${data}" ]];
+if [[ "$data" == "null" ]];
 
-  then echo $data;
-
-  else echo "null";
+  then data="";
 
 fi
+
+echo $data;
 
 }
 
