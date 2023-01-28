@@ -1,6 +1,6 @@
 #!/bin/bash
-# This file contains the csv2json function.
-# Copyright (C) 2022 Tamas Viktor Krizsan
+# This file contains bash script development helper functions
+# Copyright (C) 2022-2023 Tamas Viktor Krizsan
 # <https://github.com/tamasviktorkrizsan>
 # License: GPL-3.0-or-later
 
