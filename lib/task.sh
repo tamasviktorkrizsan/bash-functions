@@ -1,5 +1,5 @@
 #!/bin/bash
-# This file contains json query related functions.
+# This file contains the task function.
 # Copyright (C) 2022 Tamas Viktor Krizsan
 # <https://github.com/tamasviktorkrizsan>
 # License: GPL-3.0-or-later
@@ -10,12 +10,11 @@ source header.bash.sh
 ### FUNCTIONS
 
 ################################################################################
-# Make a JSON filelist with exact filenames from
-# file patterns,exact files or from CSV file.
+# Loop processing controller.
 # Arguments:
-#  Assoc array, (array/object) index, key
+# processor function name, processor function parameters
 # Outputs:
-# A array of JSON objects.
+# Loop through the given function
 ################################################################################
 function task () {
 
@@ -23,13 +22,11 @@ function task () {
 ### INPUT PARAMETERS
 
 
-declare function_name="${1}";
+declare usr_function_name="${1}";
 
 source $function_name.sh
 
-
 declare usr_input="${USR_PARAMETERS[input]}";
-
 
 declare json_list;
 
@@ -38,7 +35,6 @@ json_list=$(convert_json "${USR_PARAMETERS[input]}");
 
 
 ### EXECUTE
-
 
 declare number_of_objects;
 
