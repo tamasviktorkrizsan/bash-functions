@@ -39,28 +39,35 @@ the relative path from the previous script file folder, then the given shell fil
 in the target folder will be executed.
 
 
-### remove_whitespace
-
-`remove_whitespace "<string>";`
-
-If you want to replace whitespace with underscores in **strings**, you can utilize
-this function.
-
 
 ### rename_whitespace
 
-`rename_whitespace "<filename>"`
+`rename_whitespace "<filename or string>"`
 
-If you want to replace whitespace with underscores in **filenames**, you can utilize
-this function.
+The behaviour of this function depends on the enviroment where its called from.
 
-- **default state:** when all parameters are empty, the function will
-process all files and folders in the current folder.
+- **called from shell files:** replace the whitespace(s) with underscores in **strings**
+
+- **called from interactive shell:** replace the whitespace(s) with underscores in **filenames**
 
 - If you want to run this function in a interactive shell source the
 `whitespace.sh` or the `bash.inc.sh` shell file in `home\<user>\.bash_profile`.
 After this was done, next time when you fire up the Bash Prompt, the rename_whitespace
 function automatically loads up.
+
+
+### task
+
+`"<usr_parameters>"`
+
+`task "<function name>"`
+
+Looping control of a chosen function.
+
+- Handles wildcard file pattern (*.format)
+
+- Handles filenames with whitespace(s)
+
 
 
 ## Additional features
