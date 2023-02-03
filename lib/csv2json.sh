@@ -1,6 +1,6 @@
 #!/bin/bash
 # This file contains the csv2json function.
-# Copyright (C) 2022 Tamas Viktor Krizsan
+# Copyright (C) 2022-2023 Tamas Viktor Krizsan
 # <https://github.com/tamasviktorkrizsan>
 # License: GPL-3.0-or-later
 
@@ -8,19 +8,19 @@
 ### FUNCTIONS
 
 ################################################################################
-# Convert Excel compatible csv files to JSON.
+# Convert Excel compatible csv files to JSON. This is a helper function of the
+# convert_json function.
 # Arguments:
-#   csv filename or wildcard csv pattern.
+#   exact csv filename or wildcard csv pattern.
 # Outputs:
-#   call from interactive shell: outputs a json file.
-#   call from script file: echo json formatted string.
+#   echo json formatted string.
 ################################################################################
 csv2json () {
 
 
 ## Input Parameters
 
-declare usr_input="${1}";
+declare usr_input="${1:-*.csv}";
 
 
 ## Processing
@@ -146,12 +146,8 @@ dos2unix "$usr_input";
   json_string+="]";
 
 
-if [[ "$BASH_SUBSHELL" -eq 0 ]];
+  echo "$json_string";
 
-  then echo "$json_string" > "${usr_input%.*}.json";
-
-  else echo "$json_string";
-
-fi
+done;
 
 }
