@@ -189,7 +189,7 @@ fi
 ################################################################################
 # Create a JSON formatted string.
 # Arguments:
-# filename (pattern) , USR_PARAMETERS (global-)
+#   user parameters (array)
 #
 #   csv files -> Converts the first line (heading) of the csv file into keys and
 #   all the subsequent rows into values / objects
@@ -203,144 +203,70 @@ fi
 function convert_json () {
 
 
-declare usr_input="${1}";
+# if the input is not assoc array, convert it.
+
+if [[ ${1@a} = A ]];
+
+    then declare -n usr_parameters="${1}";
+
+    else declare -A usr_parameters=( [input]="${1}" );
+
+fi
 
 
-  # estimate input type and prepare data for processing
-
-  shopt -s nullglob;
-
-  declare input_type;
-
-  declare -a filelist_array;
-
-  if $(contains_literal "${usr_input}" "*.csv"); then
-
-    input_type="wildcard_csv_pattern";
-
-    for i in ${usr_input}; do
-
-      filelist_array[${#filelist_array[@]}]+="$(absolute_path "$i" "windows->json")";
-
-    done;
+shopt -s nullglob;
 
 
-  elif $(contains_literal "${usr_input}" "*."); then
+# estimate the input type and assemble the file list into a JSON string
 
-    input_type="wildcard_pattern";
+    # wildcard csv pattern
 
+if $(contains_literal "${usr_parameters[input]}" "*.csv"); then
 
-    for i in ${usr_input}; do
-
-      filelist_array[${#filelist_array[@]}]+="$(absolute_path "$i" "windows->json")";
-
-    done;
+    echo "ERROR! Wildcard csv files not allowed";
 
 
-    elif $(contains_literal "${usr_input}" ".csv"); then
+    # exact csv file
 
-      input_type="exact_csv_file";
+    elif $(contains_literal "${usr_parameters[input]}" ".csv"); then
 
+        declare json_list;
+
+        json_list=$(csv2json "${usr_parameters[input]}");
+
+
+
+    # wildcard pattern - expand to exact filenames
+
+    elif $(contains_literal "${usr_parameters[input]}" "*."); then
+
+        declare -a filelist_array;
+
+        for i in ${usr_parameters[input]}; do
+
+            filelist_array+=("$(absolute_path "$i" "windows->json")");
+
+        done;
+
+        json_list=$(filename2json "$filelist_array");
+
+
+# exact file
 
     else
 
-      input_type="exact_file";
+        declare exact_file;
 
-      filelist_array+="$(absolute_path "${usr_input}" "windows->json")";
+        exact_file="$(absolute_path "${usr_parameters[input]}" "windows->json")";
+
+        json_list=$(filename2json "$exact_file");
 
   fi
 
 
-  # according the input type, assemble the file list into a JSON string
+  ### RETURN
 
-  declare json_list;
-
-  case $input_type in
-
-    "exact_csv_file")
-
-      json_list=$(csv2json "$usr_input");;
-
-
-    "wildcard_csv_pattern")
-
-     for i in ${usr_input}; do
-
-       json_list=$(csv2json "$i");
-
-     done;;
-
-
-    "wildcard_pattern" | "exact_file" )
-
-
-    # uniform data
-
-    declare number_of_elements="${#USR_UNIFORM_PARAMETERS[@]}";
-
-    declare element_counter=0;
-
-
-    for key in "${!USR_UNIFORM_PARAMETERS[@]}"; do
-
-        uniform_parameters+="\""$key"\":\""${USR_UNIFORM_PARAMETERS[$key]}"\"";
-
-        element_counter=$(($element_counter+1));
-
-
-        # insert commas for the end of each key-value pairs except the last one
-
-        if (( $element_counter < $(($number_of_elements)) ));
-
-            then json_list+=",";
-
-        fi
-
-    done;
-
-
-    # unique data
-
-    number_of_elements="${#filelist_array[@]}";
-
-    element_counter=0;
-
-
-    # start JSON string writing
-
-    json_list="[";
-
-
-    # unique data
-
-    for input in "${filelist_array[@]}"; do
-
-        json_list+="{\""input"\":\""$usr_input"\"";
-
-        # uniform parameters
-
-        json_list+="}";
-
-
-        element_counter=$(($element_counter+1));
-
-
-        # insert commas for the end of each key-value pairs except the last one
-
-        if (( $element_counter < $(($number_of_elements)) ));
-
-            then json_list+=",";
-
-            fi
-
-        done;
-
-        json_list+="]";;
-
-  esac;
-
-
-  if [ "$BASH_SUBSHELL" -eq 0 ];
+  if [ -n "$PS1" ];
 
     then echo "$json_list" > "${i%.*}.json";
 
