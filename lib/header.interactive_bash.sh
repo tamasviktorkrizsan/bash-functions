@@ -15,6 +15,10 @@ shopt -s nullglob;
 echo "LOAD INTERACTIVE SHELL FUNCTIONS";
 
 
+### SYSTEM SETTINGS
+
+declare -r HOST_OS="cygwin";
+
 
 ### INCLUDE FUNCTIONS
 
