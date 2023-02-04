@@ -8,6 +8,16 @@ Set a PATH environmental variable to the directory where you want store your lib
 files and copy the contents of the "lib" folder to it.
 
 
+### Interactive shell
+
+If you want to load the functions of this repository in a interactive shell,
+edit the function list in the `header.interactive_bash.sh` shell file and
+source it in `home\<user>\.bash_profile`.
+
+After this was done, next time when you fire up the Bash Prompt,
+functions listed in the shell file will be automatically loaded up.
+
+
 ## Usage
 
 At the top of your custom script file, following the shebang `#!/bin/bash` line
@@ -50,17 +60,10 @@ The behaviour of this function depends on the enviroment where its called from.
 
 - **called from interactive shell:** replace the whitespace(s) with underscores in **filenames**
 
-- If you want to run this function in a interactive shell source the
-`whitespace.sh` or the `bash.inc.sh` shell file in `home\<user>\.bash_profile`.
-After this was done, next time when you fire up the Bash Prompt, the rename_whitespace
-function automatically loads up.
-
 
 ### task
 
-`"<usr_parameters>"`
-
-`task "<function name>"`
+`task "<function name>" "<parameters(assoc array)>"`
 
 Looping control of a chosen function.
 
