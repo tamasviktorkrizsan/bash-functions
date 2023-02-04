@@ -5,7 +5,16 @@
 # License: GPL-3.0-or-later
 
 
+
+### INCLUDES
+
 source header.bash.sh
+
+
+### GLOBALS
+
+declare -Ax parameters;
+
 
 ### FUNCTIONS
 
@@ -26,11 +35,11 @@ declare usr_function_name="${1}";
 
 source $function_name.sh
 
-declare usr_input="${USR_PARAMETERS[input]}";
+declare usr_parameters_array="${2}";
 
 declare json_list;
 
-json_list=$(convert_json "${USR_PARAMETERS[input]}");
+json_list=$(convert_json "$usr_parameters_array");
 
 
 
