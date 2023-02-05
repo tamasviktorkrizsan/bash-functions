@@ -25,14 +25,7 @@ declare usr_input="${1:-*.csv}";
 
 ## Processing
 
-for i in $usr_input; do
-
-
-dos2unix "$usr_input";
-
   read first_row < "$usr_input";
-
-    echo $first_row;
 
 
     ## Heading
@@ -145,9 +138,6 @@ dos2unix "$usr_input";
 
   json_string+="]";
 
-
   echo "$json_string";
-
-done;
 
 }
