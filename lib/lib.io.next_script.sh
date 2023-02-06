@@ -1,6 +1,6 @@
 #!/bin/bash
 # This file contains the next_script function.
-# Copyright (C) 2020 Tamas Viktor Krizsan
+# Copyright (C) 2020-2023 Tamas Viktor Krizsan
 # <https://github.com/tamasviktorkrizsan>
 # License: GPL-3.0-or-later
 
