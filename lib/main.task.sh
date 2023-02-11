@@ -35,11 +35,11 @@ declare usr_function_name="${1}";
 
 source $function_name.sh
 
-declare usr_parameters_array="${2}";
+declare usr_parameters="${2}";
 
 declare json_list;
 
-json_list=$(convert_json "$usr_parameters_array");
+json_list=$(convert_json "${usr_parameters[input]}");
 
 
 
