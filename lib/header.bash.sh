@@ -14,19 +14,4 @@ declare -r HOST_OS="cygwin";
 
 #set -ev;
 
-
-### INCLUDE FUNCTIONS
-
-source d2u.sh
-
-source regex.sh
-
-source whitespace.sh
-
-source csv2json.sh
-
-source json.sh
-
-source io.sh
-
-source next_script.sh
+set -x;
