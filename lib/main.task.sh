@@ -39,7 +39,7 @@ declare usr_parameters="${2}";
 
 declare json_list;
 
-json_list=$(convert_json "${usr_parameters[input]}");
+json_list=$(make_json_filelist "${usr_parameters[input]}");
 
 
 
