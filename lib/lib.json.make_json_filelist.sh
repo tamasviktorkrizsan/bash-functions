@@ -21,7 +21,7 @@
 #   call from interactive shell: outputs a json file.
 #   call from script file: echo json formatted string.
 ################################################################################
-function convert_json () {
+function make_json_filelist () {
 
 
 declare usr_input="${1}";
