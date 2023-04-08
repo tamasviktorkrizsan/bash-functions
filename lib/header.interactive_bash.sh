@@ -22,6 +22,7 @@ declare -r HOST_OS="cygwin";
 
 ### INCLUDE FUNCTIONS
 
+source header.json.sh
 
 source dev_tools.sh
 
@@ -30,9 +31,5 @@ source d2u.sh
 source regex.sh
 
 source whitespace.sh
-
-source csv2json.sh
-
-source json.sh
 
 source io.sh
